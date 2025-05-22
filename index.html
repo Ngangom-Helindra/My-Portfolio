@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Helindra's Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .home {
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('wallpaper.jpg') no-repeat center center/cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.home h1 {
+  font-size: 60px;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  color: white;
+  text-shadow:
+    0 0 10px #ffae00,  /* warm orange glow */
+    0 0 20px #ffd700,  /* golden yellow glow */
+    0 0 30px #ffaa00;  /* deeper glow */
+}
+
+.home .name {
+  font-size: 24px; /* reduced from 30px to 24px */
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white; /* ensures text inside button stays white */
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  border: 2px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  top: 0;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  color: white;
+  background-color: #00bfff;
+  box-shadow: 0 8px 20px #00bfff;
+  border-color: #00bfff;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+    .about {
+      padding: 80px 20px;
+      color: white;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('wall2.jpg') no-repeat center center / cover;
+    }
+
+    .about h2, .education h2, .skills h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      margin-bottom: 50px;
+      color: #00bfff;
+      text-align: center;
+      text-shadow:
+        2px 2px 0 #005f99,
+        4px 4px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about-box {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .about-box h3 {
+      color: #00bfff;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .about-box p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .education {
+      padding: 80px 20px;
+      color: white;
+      text-align: center;
+      background: 
+        linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+        url('wall3.jpg') no-repeat center center / cover;
+    }
+
+    .edu-item {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      text-align: left;
+      backdrop-filter: blur(5px);
+    }
+
+    .edu-item h3 {
+      font-size: 22px;
+      color: #00bfff;
+      margin-bottom: 10px;
+    }
+
+    .edu-item p {
+      font-size: 16px;
+      margin: 6px 0;
+    }
+
+    .skills {
+  position: relative;
+  padding: 80px 20px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.skills::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.75);
+}
+
+.skills > *, .skills .about-row, .skills #skillsChart {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+    .skills-list {
+      max-width: 800px;
+      margin: auto;
+      text-align: left;
+      font-size: 18px;
+      line-height: 1.7;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .skills-list p {
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .skills-list strong {
+      color: #00bfff;
+    }
+
+    #skillsChart {
+      display: block;
+      margin: 40px auto;
+      max-width: 400px;
+    }
+
+
+
+
+
+.projects {
+  position: relative;
+  padding: 80px 20px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  }
+
+.projects::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.75); /* slightly less dark than 0.5 */
+}
+
+.projects::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.4),  /* darker black overlay */
+    rgba(0, 0, 0, 0.4)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+.projects h2 {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-size: 42px;
+  color: #00bfff;
+  margin-bottom: 50px;
+  text-shadow:
+    2px 2px 0 #005f99,
+    4px 4px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.projects-list {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  text-align: left;
+  z-index: 2;
+}
+
+.project-box {
+  flex: 1;
+  min-width: 320px;
+  max-width: 450px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.project-box h3 {
+  color: #00bfff;
+  margin-bottom: 20px;
+}
+
+.project-box a:hover {
+  text-decoration: underline;
+  color: #0077cc;
+}
+
+
+
+.connect {
+  padding: 80px 20px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url('wall7.jpg') no-repeat center center / cover;
+  color: white;
+}
+
+.connect .section-heading {
+  font-size: 42px;
+  color: #00bfff;
+  font-family: 'Poppins', sans-serif;
+  text-shadow:
+    2px 2px 0 #005f99,
+    4px 4px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.social-links a {
+  font-size: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+  transform: translateY(-6px) scale(1.05);
+}
+
+.social-links a:active {
+  transform: translateY(2px) scale(0.95);
+}
+
+/* Hover Glows */
+.gmail:hover {
+  color: #00ff88;
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.instagram:hover {
+  color: #e1306c;
+  box-shadow: 0 0 20px #e1306c;
+}
+
+.linkedin:hover {
+  color: #0077b5;
+  box-shadow: 0 0 20px #0077b5;
+}
+
+.youtube:hover {
+  color: #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.github:hover {
+  color: #ffcc00;
+  box-shadow: 0 0 20px #ffcc00;
+}
+
+
+
+.thank-you {
+  padding: 80px 20px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('wall8.jpg') no-repeat center center / cover;
+  color: white;
+}
+
+.thank-heading {
+  font-size: 42px;
+  color: #00bfff;
+  font-family: 'Poppins', sans-serif;
+  text-shadow:
+    2px 2px 0 #005f99,
+    4px 4px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+.thank-text {
+  max-width: 700px;
+  margin: auto;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <section class="home" id="home">
+    <div class="content">
+      <h1>My Portfolio</h1>
+      <div class="name">Ngangom Helindra</div>
+      <a href="#about" class="btn">Know More About Me</a>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <div class="about-row">
+      <div class="about-box">
+        <h3>Introduction</h3>
+        <p>
+          I am <strong>Ngangom Helindra</strong>, a final-year student pursuing a Bachelor of Engineering in Computer Science 
+          with a specialization in Artificial Intelligence and Machine Learning. I am passionate about solving real-world problems 
+          through smart technologies and building innovative solutions using Python, data science, and modern AI tools.
+          <br><br>
+          I believe in continuous learning and enjoy working on projects that challenge me to grow technically and creatively.
+        </p>
+      </div>
+      <div class="about-box">
+        <h3>Career Objective</h3>
+        <p>
+          To obtain a challenging role in a forward-thinking organization where I can apply my knowledge and skills in 
+          AI, Machine Learning, and Software Development. I aspire to contribute to innovative projects and be part 
+          of a dynamic team that values creativity, collaboration, and problem-solving.
+          <br><br>
+          I am eager to enhance my expertise while delivering meaningful solutions that align with organizational goals and 
+          improve user experience. I seek an environment that fosters growth, learning, and the ability to make a real impact.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="education" id="education">
+    <h2>Education</h2>
+    <div class="edu-item">
+      <h3>Sathyabama Institute of Science and Technology, Tamil Nadu</h3>
+      <p>Bachelor of Engineering – Computer Science (AI & ML)</p>
+      <p><strong>Sep 2021 – May 2025</strong></p>
+      <p>CGPA: <strong>8.05</strong></p>
+    </div>
+    <div class="edu-item">
+      <h3>Maria Montessori Sr. Secondary School, Manipur</h3>
+      <p>Higher Secondary (Class 12)</p>
+      <p><strong>Mar 2020 – Jun 2021</strong></p>
+      <p>Percentage: <strong>68.5%</strong></p>
+    </div>
+    <div class="edu-item">
+      <h3>Maria Montessori Sr. Secondary School, Manipur</h3>
+      <p>Secondary School (Class 10)</p>
+      <p><strong>Mar 2018 – Apr 2019</strong></p>
+      <p>Percentage: <strong>81.6%</strong></p>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+  <video autoplay muted loop class="bg-video">
+  <source src="wall6.mp4" type="video/mp4" />
+</video>
+
+  <h2>My Skillsets</h2>
+
+  <div class="about-row">
+    <!-- Programming Languages -->
+    <div class="about-box">
+      <h3>Programming Languages</h3>
+      <p>Python (Advanced)<br>C (Intermediate)<br>R (Beginner)</p>
+    </div>
+
+    <!-- Libraries / Frameworks -->
+    <div class="about-box">
+      <h3>Libraries / Frameworks</h3>
+      <p>Scikit-learn<br>TensorFlow<br>PyTorch<br>NLTK (Natural Language Toolkit)</p>
+    </div>
+
+    <!-- Databases -->
+    <div class="about-box">
+      <h3>Databases</h3>
+      <p>SQL (Intermediate)<br>MongoDB (Beginner)</p>
+    </div>
+
+    <!-- Soft Skills -->
+    <div class="about-box">
+      <h3>Soft Skills</h3>
+      <p>Critical Thinking<br>Teamwork<br>Problem Solving<br>Communication</p>
+    </div>
+  </div>
+
+  <br><br>
+  <!-- Chart Section -->
+  <canvas id="skillsChart" width="400" height="400" style="margin-top: 40px;"></canvas>
+</section>
+
+<section class="projects" id="projects">
+  <video autoplay muted loop class="bg-video">
+    <source src="wall5.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <h2>My Projects</h2>
+
+  <div class="projects-list">
+
+    <div class="project-box">
+      <h3><a href="https://github.com/Ngangom-Helindra/My_projects/blob/main/Anime_recommandation2.ipynb" target="_blank" rel="noopener noreferrer" style="color:#00bfff; text-decoration:none;">Anime Recommendation System</a></h3>
+      <p><strong>Technologies used:</strong> Python, Pandas, NumPy, Plotly, CSV files</p>
+      <p>Developed a data-driven Anime Recommendation System by analyzing datasets with anime details and user ratings. Cleaned and preprocessed data by handling missing values, removing duplicates, and standardizing columns. Used Pandas for data integration and Plotly to visualize insights like top-rated anime, popular titles by member count, and category distribution.</p>
+    </div>
+
+    <div class="project-box">
+      <h3><a href="https://github.com/Ngangom-Helindra/YouTube-Video-Finder-with-Analysis/blob/main/YouTube%20Video%20Finder.ipynb" target="_blank" rel="noopener noreferrer" style="color:#00bfff; text-decoration:none;">YouTube Video Finder with Analysis</a></h3>
+      <p><strong>Technologies used:</strong> Python, OpenAI API, YouTube Data API, Speech Recognition, Transformers, Flask</p>
+      <p>Built a tool to search YouTube videos by voice or text input. Filters videos by duration and relevance, then uses GPT models to analyze video titles and suggest the best video. Integrated APIs for seamless data fetching and AI-based title analysis.</p>
+    </div>
+
+    <div class="project-box">
+      <h3><a href="https://replit.com/@NGHLAB/Python-Compiler" target="_blank" rel="noopener noreferrer" style="color:#00bfff; text-decoration:none;">Mini Python Compiler</a></h3>
+      <p><strong>Technologies used:</strong> Flask, HTML, CSS, JavaScript, CodeMirror</p>
+      <p>Developed a web-based Python code compiler allowing users to write and run Python code directly in the browser. Features syntax highlighting with CodeMirror and backend code execution using Flask, all hosted on Replit for easy access and use.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="connect" id="connect">
+  <h2 class="section-heading">Let's Connect</h2>
+
+  <div class="social-links">
+    <a href="mailto:ngangomlukhoi@gmail.com" class="icon gmail" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-envelope"></i> Gmail
+    </a>
+    <a href="https://www.instagram.com/_n_g_h_?igsh=enV6djMxYmx2OWs5" class="icon instagram" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://github.com/Ngangom-Helindra" class="icon github" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/ngangom-helindra-728a98251" class="icon linkedin" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://youtube.com/@ngh2505?si=HDYRQ3pxKEmH4kAj" class="icon youtube" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-youtube"></i> YouTube
+    </a>
+  </div>
+</section>
+
+
+
+<section class="thank-you" id="thank-you">
+  <h2 class="thank-heading">Thank You!</h2>
+  <p class="thank-text">I appreciate your time and interest in exploring my portfolio. Feel free to reach out — I'm always open to new opportunities, collaborations, and creative discussions!</p>
+</section>
+
+
+    
+
+
+    <canvas id="skillsChart" width="300" height="300"></canvas>
+  </section>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Pie Chart Script -->
+  <script>
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ['Python', 'C', 'R'],
+    datasets: [{
+      label: 'Programming Skills',
+      data: [60, 30, 10],
+      backgroundColor: [
+  '#1f77b4', // Deeper Blue for Python
+  '#d62728', // Rich Red-Orange for C
+  '#2ca02c'  // Medium Sea Green for R
+],
+      borderColor: [
+  '#1f77b4', // Deeper Blue for Python
+  '#d62728', // Rich Red-Orange for C
+  '#2ca02c'  // Medium Sea Green for R
+],
+            borderWidth: 4,
+      hoverOffset: 10,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: 'white',
+          font: {
+            size: 14
+          }
+        }
+      },
+      title: {
+        display: true,
+        text: 'Programming Skills Distribution',
+        color: '#00bfff',
+        font: {
+          size: 20,
+          weight: 'bold'
+        }
+      }
+    }
+  }
+});
+
+  </script>
+
+</body>
+</html>
